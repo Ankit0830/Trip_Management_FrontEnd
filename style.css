@@ -1,0 +1,11 @@
+body {
+  background-color: #f5f5f7;
+}
+
+h1, h2 {
+  color: #212529;
+}
+
+.card {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.15);
+}

@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TripMate — Plan. Book. Go.</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+    />
+
+    <!-- Icons (Bootstrap Icons) -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+            rel="stylesheet"
+    />
+
+    <style>
+        :root{
+          --brand:#0d6efd;
+          --dark:#0b1426;
+        }
+        body{scroll-behavior:smooth;}
+        /* Hero */
+        .hero{
+          position:relative;
+          min-height:92vh;
+          color:#fff;
+          display:grid;
+          place-items:center;
+          text-align:center;
+          overflow:hidden;
+          background:#000;
+        }
+        .hero::before{
+          content:"";
+          position:absolute; inset:0;
+          background:url("https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1600&auto=format&fit=crop") center/cover no-repeat;
+          filter:brightness(0.55);
+          transform:scale(1.05);
+        }
+        .hero .glass{
+          position:relative;
+          backdrop-filter: blur(6px);
+          background:rgba(255,255,255,.08);
+          border:1px solid rgba(255,255,255,.15);
+          border-radius:1rem;
+          padding:2rem;
+          max-width:900px;
+          box-shadow:0 10px 30px rgba(0,0,0,.25);
+        }
+        .search-card{
+          background:#fff;
+          border-radius:.85rem;
+          box-shadow:0 12px 30px rgba(13,110,253,.18);
+          margin-top:1.25rem;
+        }
+        .badge-soft{
+          background:rgba(13,110,253,.15);
+          color:#e9f2ff;
+          border:1px solid rgba(255,255,255,.2);
+        }
+        /* Section headings */
+        .section-title{
+          font-weight:800;
+          letter-spacing:.3px;
+        }
+        /* Feature cards */
+        .feature-card{
+          transition:transform .25s ease, box-shadow .25s ease;
+          border:0;
+          box-shadow:0 6px 18px rgba(0,0,0,.06);
+          border-radius:1rem;
+        }
+        .feature-card:hover{
+          transform:translateY(-6px);
+          box-shadow:0 16px 36px rgba(0,0,0,.12);
+        }
+        /* Destination cards */
+        .dest-card{
+          border:0; border-radius:1rem; overflow:hidden;
+          box-shadow:0 6px 18px rgba(0,0,0,.08);
+          transition:transform .25s ease;
+        }
+        .dest-card:hover{ transform: translateY(-6px); }
+        .dest-img{
+          height:230px; object-fit:cover;
+        }
+        .chip{
+          position:absolute; top:12px; left:12px;
+          background:rgba(0,0,0,.6); color:#fff; padding:.35rem .6rem;
+          font-size:.8rem; border-radius:999px;
+          backdrop-filter: blur(4px);
+        }
+        /* CTA strip */
+        .cta{
+          background:linear-gradient(125deg,#0d6efd 0%, #6610f2 100%);
+          color:#fff; border-radius:1rem;
+        }
+        /* Footer */
+        .footer{
+          background:var(--dark);
+          color:#c9d3ff;
+        }
+        .rating i{ color:#ffc107; }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="index.html">
+            <i class="bi bi-compass"></i> TripMate
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                <li class="nav-item"><a class="nav-link" href="trips.html">Trips</a></li>
+                <li class="nav-item"><a class="nav-link " href="tripForm.html">New Trip</a></li>
+<!--                <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="#destinations">Destinations</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>-->
+<!--                <li class="nav-item"><a class="btn btn-primary ms-lg-2" href="#get-started">-->
+<!--                    <i class="bi bi-rocket-takeoff-fill me-1"></i> Get Started-->
+<!--                </a></li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+    <div class="glass container">
+      <span class="badge badge-soft rounded-pill mb-3">
+        <i class="bi bi-lightning-charge-fill me-1"></i> Plan. Book. Go.
+      </span>
+        <h1 class="display-4 fw-bold">WellCome to TripMate</h1>
+        <p class="lead mb-0 opacity-75">
+            Build day-by-day itineraries, and manage booking your travel buddies.
+        </p>
+
+<!--        &lt;!&ndash; Smart Search &ndash;&gt;-->
+<!--        <div class="search-card p-3 p-md-4">-->
+<!--            <form class="row g-2 g-md-3 align-items-center">-->
+<!--                <div class="col-12 col-md-4">-->
+<!--                    <label class="form-label small text-muted mb-1">Destination</label>-->
+<!--                    <input type="text" class="form-control form-control-lg" placeholder="e.g., Bali, Paris, Manali" />-->
+<!--                </div>-->
+<!--                <div class="col-6 col-md-3">-->
+<!--                    <label class="form-label small text-muted mb-1">From</label>-->
+<!--                    <input type="date" class="form-control form-control-lg" />-->
+<!--                </div>-->
+<!--                <div class="col-6 col-md-3">-->
+<!--                    <label class="form-label small text-muted mb-1">To</label>-->
+<!--                    <input type="date" class="form-control form-control-lg" />-->
+<!--                </div>-->
+<!--                <div class="col-12 col-md-2 d-grid">-->
+<!--                    <label class="form-label small text-transparent mb-1"> </label>-->
+<!--                    <a href="trips.html" type="button" class="btn btn-primary btn-lg">-->
+<!--                        <i class="bi bi-search me-1"></i> Explore-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+
+        <div><a href="trips.html" class="btn mt-4 btn-lg btn-outline-light" >Explore</a></div>
+
+        <div class="d-flex gap-3 justify-content-center mt-3">
+            <div class="d-flex align-items-center small">
+                <i class="bi bi-check-circle-fill text-success me-2"></i> Itinerary
+            </div>
+            <div class="d-flex align-items-center small">
+                <i class="bi bi-check-circle-fill text-success me-2"></i> Planning
+            </div>
+            <div class="d-flex align-items-center small">
+                <i class="bi bi-check-circle-fill text-success me-2"></i> Offline Access
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Features -->
+<!--<section id="features" class="py-5">-->
+<!--    <div class="container">-->
+<!--        <h2 class="section-title text-center mb-2">Everything you need to manage a perfect trip</h2>-->
+<!--        <p class="text-center text-muted mb-5">From discovery to return, keep every detail in one place.</p>-->
+
+<!--        <div class="row g-4">-->
+<!--            <div class="col-md-6 col-lg-3">-->
+<!--                <div class="card feature-card h-100">-->
+<!--                    <div class="card-body">-->
+<!--                        <i class="bi bi-map fs-2 text-primary"></i>-->
+<!--                        <h5 class="mt-3">Smart Itineraries</h5>-->
+<!--                        <p class="text-muted">Auto-build day plans with travel time, opening hours, and must-see spots.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6 col-lg-3">-->
+<!--                <div class="card feature-card h-100">-->
+<!--                    <div class="card-body">-->
+<!--                        <i class="bi bi-wallet2 fs-2 text-primary"></i>-->
+<!--                        <h5 class="mt-3">Budget & Split</h5>-->
+<!--                        <p class="text-muted">Track expenses, split with friends, export receipts in one tap.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6 col-lg-3">-->
+<!--                <div class="card feature-card h-100">-->
+<!--                    <div class="card-body">-->
+<!--                        <i class="bi bi-bookmark-check fs-2 text-primary"></i>-->
+<!--                        <h5 class="mt-3">Bookings Hub</h5>-->
+<!--                        <p class="text-muted">Store tickets & hotels; get reminders and live flight/status updates.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6 col-lg-3">-->
+<!--                <div class="card feature-card h-100">-->
+<!--                    <div class="card-body">-->
+<!--                        <i class="bi bi-people fs-2 text-primary"></i>-->
+<!--                        <h5 class="mt-3">Team Planning</h5>-->
+<!--                        <p class="text-muted">Invite friends, vote on plans, and chat right inside the itinerary.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!-- Popular Destinations -->
+<!--<section id="destinations" class="py-5 bg-light">-->
+<!--    <div class="container">-->
+<!--        <div class="d-flex justify-content-between align-items-end mb-3">-->
+<!--            <div>-->
+<!--                <h2 class="section-title mb-1">Popular Destinations</h2>-->
+<!--                <p class="text-muted mb-0">Handpicked places to kickstart your next journey</p>-->
+<!--            </div>-->
+<!--            <a href="#" class="btn btn-outline-primary btn-sm">View all</a>-->
+<!--        </div>-->
+
+<!--        <div class="row g-4">-->
+<!--            &lt;!&ndash; Card 1 &ndash;&gt;-->
+<!--            <div class="col-md-6 col-lg-4">-->
+<!--                <div class="card dest-card">-->
+<!--                    <div class="position-relative">-->
+<!--                        <img class="dest-img w-100" src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1400&auto=format&fit=crop" alt="Bali" />-->
+<!--                        <span class="chip"><i class="bi bi-sun me-1"></i> Bali, Indonesia</span>-->
+<!--                    </div>-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title mb-1">Tropical Escape</h5>-->
+<!--                        <p class="text-muted small mb-3">7D/6N · Beaches, temples, cafés</p>-->
+<!--                        <div class="d-flex justify-content-between align-items-center">-->
+<!--                            <span class="fw-semibold">From ₹49,999</span>-->
+<!--                            <a href="#" class="btn btn-sm btn-primary">Plan Now</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Card 2 &ndash;&gt;-->
+<!--            <div class="col-md-6 col-lg-4">-->
+<!--                <div class="card dest-card">-->
+<!--                    <div class="position-relative">-->
+<!--                        <img class="dest-img w-100" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1400&auto=format&fit=crop" alt="Paris" />-->
+<!--                        <span class="chip"><i class="bi bi-heart me-1"></i> Paris, France</span>-->
+<!--                    </div>-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title mb-1">Romance & Art</h5>-->
+<!--                        <p class="text-muted small mb-3">5D/4N · Louvre, Seine, cafés</p>-->
+<!--                        <div class="d-flex justify-content-between align-items-center">-->
+<!--                            <span class="fw-semibold">From ₹89,499</span>-->
+<!--                            <a href="#" class="btn btn-sm btn-primary">Plan Now</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Card 3 &ndash;&gt;-->
+<!--            <div class="col-md-6 col-lg-4">-->
+<!--                <div class="card dest-card">-->
+<!--                    <div class="position-relative">-->
+<!--                        <img class="dest-img w-100" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop" alt="Manali" />-->
+<!--                        <span class="chip"><i class="bi bi-snow me-1"></i> Manali, India</span>-->
+<!--                    </div>-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title mb-1">Himalayan Getaway</h5>-->
+<!--                        <p class="text-muted small mb-3">6D/5N · Snow, treks, cafés</p>-->
+<!--                        <div class="d-flex justify-content-between align-items-center">-->
+<!--                            <span class="fw-semibold">From ₹24,999</span>-->
+<!--                            <a href="#" class="btn btn-sm btn-primary">Plan Now</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!-- Why Choose Us -->
+<!--<section class="py-5">-->
+<!--    <div class="container">-->
+<!--        <div class="row align-items-center g-4">-->
+<!--            <div class="col-lg-6">-->
+<!--                <img class="img-fluid rounded-4 shadow"-->
+<!--                     src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=1600&auto=format&fit=crop"-->
+<!--                     alt="Trip Planning" />-->
+<!--            </div>-->
+<!--            <div class="col-lg-6">-->
+<!--                <h2 class="section-title">Plan trips 10× faster</h2>-->
+<!--                <p class="text-muted">-->
+<!--                    Paste your bookings, pick your places, and let TripMate arrange days, timings, and travel modes—syncing everything with your group automatically.-->
+<!--                </p>-->
+<!--                <div class="row g-3">-->
+<!--                    <div class="col-6">-->
+<!--                        <div class="p-3 border rounded-4">-->
+<!--                            <h3 class="h1 mb-0 text-primary">25K+</h3>-->
+<!--                            <span class="small text-muted">Trips organized</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-6">-->
+<!--                        <div class="p-3 border rounded-4">-->
+<!--                            <h3 class="h1 mb-0 text-primary">4.8/5</h3>-->
+<!--                            <span class="small text-muted">Avg. user rating</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="mt-4 d-flex gap-2">-->
+<!--                    <a href="#get-started" class="btn btn-primary btn-lg">-->
+<!--                        <i class="bi bi-calendar2-check me-1"></i> Create Itinerary-->
+<!--                    </a>-->
+<!--                    <a href="#" class="btn btn-outline-secondary btn-lg">-->
+<!--                        <i class="bi bi-play-circle me-1"></i> Watch Demo-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--&lt;!&ndash; Reviews &ndash;&gt;-->
+<!--<section id="reviews" class="py-5 bg-light">-->
+<!--    <div class="container">-->
+<!--        <h2 class="section-title text-center mb-2">Loved by travelers</h2>-->
+<!--        <p class="text-center text-muted mb-5">Real stories from real journeys</p>-->
+
+<!--        <div class="row g-4">-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="p-4 bg-white rounded-4 shadow-sm h-100">-->
+<!--                    <div class="rating mb-2">-->
+<!--                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>-->
+<!--                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>-->
+<!--                        <i class="bi bi-star-fill"></i>-->
+<!--                    </div>-->
+<!--                    <p class="mb-3">“Perfect for our Ladakh road trip—routes, fuel stops, permits, everything in one place.”</p>-->
+<!--                    <div class="d-flex align-items-center gap-2">-->
+<!--                        <img src="https://i.pravatar.cc/40?img=5" class="rounded-circle" alt="avatar" />-->
+<!--                        <div>-->
+<!--                            <strong>Rohit Singh</strong><br>-->
+<!--                            <span class="text-muted small">India</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="p-4 bg-white rounded-4 shadow-sm h-100">-->
+<!--                    <div class="rating mb-2">-->
+<!--                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>-->
+<!--                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>-->
+<!--                        <i class="bi bi-star-half"></i>-->
+<!--                    </div>-->
+<!--                    <p class="mb-3">“Expense split + reminders saved us hours. No more ‘who paid what’ drama.”</p>-->
+<!--                    <div class="d-flex align-items-center gap-2">-->
+<!--                        <img src="https://i.pravatar.cc/40?img=32" class="rounded-circle" alt="avatar" />-->
+<!--                        <div>-->
+<!--                            <strong>Neha Kapoor</strong><br>-->
+<!--                            <span class="text-muted small">Singapore</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="p-4 bg-white rounded-4 shadow-sm h-100">-->
+<!--                    <div class="rating mb-2">-->
+<!--                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>-->
+<!--                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>-->
+<!--                        <i class="bi bi-star-fill"></i>-->
+<!--                    </div>-->
+<!--                    <p class="mb-3">“Synced our flights and hotels, built a flexible plan we could tweak on the go.”</p>-->
+<!--                    <div class="d-flex align-items-center gap-2">-->
+<!--                        <img src="https://i.pravatar.cc/40?img=18" class="rounded-circle" alt="avatar" />-->
+<!--                        <div>-->
+<!--                            <strong>Amelia Brown</strong><br>-->
+<!--                            <span class="text-muted small">UK</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--&lt;!&ndash; CTA &ndash;&gt;-->
+<!--<section id="get-started" class="py-5">-->
+<!--    <div class="container">-->
+<!--        <div class="cta p-5 p-md-5 d-flex flex-column flex-lg-row align-items-center justify-content-between">-->
+<!--            <div class="mb-4 mb-lg-0">-->
+<!--                <h3 class="mb-2 fw-bold">Ready to plan your next adventure?</h3>-->
+<!--                <p class="mb-0">Create a trip, invite friends, and watch the perfect plan come together.</p>-->
+<!--            </div>-->
+<!--            <div class="d-flex gap-2">-->
+<!--                <a href="#" class="btn btn-light btn-lg"><i class="bi bi-person-plus me-1"></i> Create Free Account</a>-->
+<!--                <a href="#" class="btn btn-outline-light btn-lg"><i class="bi bi-diagram-3 me-1"></i> Start a Demo Trip</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<footer class="footer pt-5 pb-4">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-md-6 col-lg-4">
+                <h5 class="fw-bold text-white"><i class="bi bi-compass me-1"></i> TripMate</h5>
+                <p class="small mb-3">Trip planning, booking, budgets, and group coordination—beautifully organized.</p>
+                <div class="d-flex gap-2">
+                    <a class="text-decoration-none text-light" href="#"><i class="bi bi-facebook"></i></a>
+                    <a class="text-decoration-none text-light" href="#"><i class="bi bi-instagram"></i></a>
+                    <a class="text-decoration-none text-light" href="#"><i class="bi bi-twitter-x"></i></a>
+                </div>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="text-white-50">Product</h6>
+                <ul class="list-unstyled small mb-0">
+                    <li><a class="link-light text-decoration-none" href="#">Features</a></li>
+                    <li><a class="link-light text-decoration-none" href="#">Pricing</a></li>
+                    <li><a class="link-light text-decoration-none" href="#">Download</a></li>
+                    <li><a class="link-light text-decoration-none" href="#">Changelog</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h6 class="text-white-50">Company</h6>
+                <ul class="list-unstyled small mb-0">
+                    <li><a class="link-light text-decoration-none" href="#">About</a></li>
+                    <li><a class="link-light text-decoration-none" href="#">Careers</a></li>
+                    <li><a class="link-light text-decoration-none" href="#">Press</a></li>
+                    <li><a class="link-light text-decoration-none" href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h6 class="text-white-50">Newsletter</h6>
+                <form class="d-flex gap-2">
+                    <input type="email" class="form-control" placeholder="Your email" />
+                    <button class="btn btn-primary" type="button">Subscribe</button>
+                </form>
+                <p class="small mt-2 text-white-50">By subscribing you agree to our Privacy Policy.</p>
+            </div>
+        </div>
+        <div class="border-top mt-4 pt-3 small text-white-50 d-flex justify-content-between">
+            <span>© <span id="yr"></span> TripMate</span>
+            <div class="d-flex gap-3">
+                <a class="link-light text-decoration-none" href="#">Terms</a>
+                <a class="link-light text-decoration-none" href="#">Privacy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
